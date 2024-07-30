@@ -6,12 +6,11 @@ def jouer():
     """pour jouer"""
     pass
 
-
-"""
-Demande à l'utilisateur de saisir une colonne valide dans laquelle jouer.
-Retourne la colonne saisie par l'utilisateur.
-"""
 def saisie_colonne():
+    """
+    Demande à l'utilisateur de saisir une colonne valide dans laquelle jouer.
+    Retourne la colonne saisie par l'utilisateur.
+    """
     # Indique si la saisie est valide ou non
     isValid = False
 
