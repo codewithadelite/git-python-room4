@@ -102,9 +102,18 @@ def alignement(matrice, combo_length=4):
 
     return total_points
 
+
 def is_full_column(matrice, num_col):
     for row in matrice:
         if row[num_col] == VIDE:
             return False
     return True
 
+
+def is_full_board(matrice):
+    """
+    Verify if the board is full
+    :param matrice : List that represent board
+    :return: (bool) True if board is full, otherwise False
+    """
+    return all(is_full_column(matrice, col) for col in range(COLONNES))
