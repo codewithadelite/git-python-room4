@@ -1,5 +1,5 @@
 from core.constants import LIGNES, COLONNES, JOUEURS, VIDE
-from core.utils import initialise_grille, alignement
+from core.utils import initialise_matrice, alignement, is_full_column, is_full_board
 from core.ui import afficher_grille
 
 
@@ -9,6 +9,7 @@ def jouer(grille, colonne, pion):
         if ligne[colonne - 1] == VIDE:
             ligne[colonne - 1] = pion
             break        
+
 
 def saisie_colonne():
     """
@@ -38,8 +39,30 @@ def saisie_colonne():
 
 def main():
     """Où le jeu commencera."""
-    grille = initialise_grille()
-    afficher_grille(grille)
+    grille = initialise_matrice()
+    current_player = 0
+
+    while True:
+        afficher_grille(grille)
+        column = saisie_colonne()
+
+        if is_full_column(grille, column):
+            print("Colonne pleine. Choisissez une autre colonne.")
+            continue
+
+        jouer(grille, column, JOUEURS[current_player])
+
+        if points := alignement(grille):
+            afficher_grille(grille)
+            print(f"Le joueur {JOUEURS[current_player]} a gagné avec {points} points!")
+            break
+
+        if is_full_board(grille):
+            afficher_grille(grille)
+            print("Match nul!")
+            break
+
+        current_player = 1 - current_player
 
 
 if __name__ == "__main__":
