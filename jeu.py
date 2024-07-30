@@ -1,11 +1,14 @@
-from core.constants import LIGNES, COLONNES, JOUEURS
+from core.constants import LIGNES, COLONNES, JOUEURS, VIDE
 from core.utils import initialise_grille, alignement
 from core.ui import afficher_grille
 
 
-def jouer():
-    """pour jouer"""
-    pass
+def jouer(grille, colonne, pion):
+    """place le pion dans la colonne choisie par l'utilisateur"""
+    for ligne in reversed(grille):
+        if ligne[colonne - 1] == VIDE:
+            ligne[colonne - 1] = pion
+            break        
 
 def saisie_colonne():
     """
@@ -19,15 +22,15 @@ def saisie_colonne():
     while not isValid:
         try:
             # Demande à l'utilisateur de saisir une colonne
-            col = int(input(f"Saisissez la colonne dans laquelle vous voulez jouer (0-{COLONNES-1}) : "))
+            col = int(input(f"Saisissez la colonne dans laquelle vous voulez jouer (1-{COLONNES}) : "))
 
             # Vérifie si la colonne est valide
-            if 0 <= col < COLONNES:
+            if 1 <= col <= COLONNES:
                 isValid = True
                 return col
 
             # Affiche un message d'erreur si la colonne n'est pas valide
-            print(f"Veuillez entrer une colonne valide (0-{COLONNES-1})")
+            print(f"Veuillez entrer une colonne valide (1-{COLONNES})")
         except ValueError:
             # Affiche un message d'erreur si la saisie n'est pas un nombre
             print("Veuillez entrer une valeur numérique")
