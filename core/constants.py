@@ -1,0 +1,5 @@
+LIGNES = 6
+COLONNES = 7
+VIDE = '.'
+JOUEURS = ['X', 'O']
+
