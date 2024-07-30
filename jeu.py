@@ -46,11 +46,11 @@ def main():
         afficher_grille(grille)
         column = saisie_colonne()
 
-        if is_full_column(grille, column):
+        if is_full_column(grille, column -1):
             print("Colonne pleine. Choisissez une autre colonne.")
             continue
-
-        jouer(grille, column, JOUEURS[current_player])
+        else:
+            jouer(grille, column, JOUEURS[current_player])
 
         if points := alignement(grille):
             afficher_grille(grille)
