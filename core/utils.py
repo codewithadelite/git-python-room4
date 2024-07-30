@@ -96,5 +96,9 @@ def alignement(matrice, combo_length=4):
 
     return total_points
 
-
+def is_full_column(matrice, num_col):
+    for row in matrice:
+        if row[num_col] == 0:
+            return False
+    return True
 
