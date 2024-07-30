@@ -84,6 +84,8 @@ def alignement(matrice, combo_length=4):
     :combo_length: int() The length of the winning combo
     :return: int() Total points based on alignments found.
     """
+    if isinstance(combo_length, int):
+        combo_length = [combo_length]
     n_rows = LIGNES or len(matrice)
     n_cols = COLONNES or len(matrice[0])
     total_points = 0
@@ -104,6 +106,8 @@ def alignement(matrice, combo_length=4):
 
 
 def is_full_column(matrice, num_col):
+    if num_col < 0 or num_col >= COLONNES:
+        raise IndexError(f"Column index {num_col} is out of range")
     for row in matrice:
         if row[num_col] == VIDE:
             return False
