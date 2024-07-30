@@ -52,10 +52,7 @@ def main():
 
         jouer(grille, column, JOUEURS[current_player])
 
-        if points := alignement(grille, JOUEURS[current_player]):
-            """
-            TODO: Ici nous devons passer un joueur comme argument, (X pour le premier joueur, O pour le deuxième joueur) 
-            """
+        if points := alignement(grille):
             afficher_grille(grille)
             print(f"Le joueur {JOUEURS[current_player]} a gagné avec {points} points!")
             break
