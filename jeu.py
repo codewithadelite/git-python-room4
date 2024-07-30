@@ -2,6 +2,7 @@ from core.constants import LIGNES, COLONNES, JOUEURS
 from core.utils import initialise_grille, alignement
 from core.ui import afficher_grille
 
+
 def jouer():
     """pour jouer"""
     pass
@@ -14,7 +15,8 @@ def saisie_colonne():
 
 def main():
     """Où le jeu commencera."""
-    pass
+    grille = initialise_grille()
+    afficher_grille(grille)
 
 
 if __name__ == "__main__":
