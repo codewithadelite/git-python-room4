@@ -1,3 +1,9 @@
-def afficher_grille():
+from .constants import COLONNES
+
+
+def afficher_grille(grille):
     """pour afficher la grille."""
-    pass
+    for ligne in grille:
+        print(' '.join(ligne))
+    print(' '.join([str(i) for i in range(1, COLONNES + 1)]))
+
